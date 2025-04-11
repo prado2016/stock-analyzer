@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📊 Stock Analyzer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f6f9;
+      padding: 2em;
+      max-width: 900px;
+      margin: auto;
+      color: #333;
+    }
+    h1 {
+      color: #111;
+      margin-bottom: 0.5em;
+      font-size: 2rem;
+    }
+    form {
+      margin-bottom: 2em;
+    }
+    input[type="text"] {
+      padding: 0.6em;
+      font-size: 1em;
+      width: 250px;
+      margin-right: 0.5em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    input[type="submit"] {
+      padding: 0.6em 1.2em;
+      font-size: 1em;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    .section {
+      background-color: white;
+      padding: 1.5em;
+      margin-bottom: 2em;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .section h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+    }
+    pre {
+      background-color: #f8f8f8;
+      padding: 1em;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+    img {
+      width: 100%;
+      max-width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-top: 1em;
+    }
+    .footer {
+      text-align: center;
+      color: #aaa;
+      font-size: 0.9em;
+      margin-top: 4em;
+    }
+  </style>
+</head>
+<body>
+  <h1>📈 Stock Moving Average Analyzer</h1>
+  <form method="post">
+    <input type="text" name="symbol" placeholder="Enter stock (e.g. AAPL)" value="{{ symbol }}">
+    <input type="submit" value="Analyze">
+  </form>
+
+  {% if summary %}
+  <div class="section">
+    <h2>📊 Summary</h2>
+    <pre>{{ summary }}</pre>
+  </div>
+  {% endif %}
+
+  {% if chart_path %}
+  <div class="section">
+    <h2>📉 Chart</h2>
+    <img src="{{ chart_path }}" alt="Stock chart for {{ symbol }}">
+  </div>
+  {% endif %}
+
+  {% if llama_response %}
+  <div class="section">
+    <h2>🤖 LLaMA's Insight</h2>
+    <p>{{ llama_response }}</p>
+  </div>
+  {% endif %}
+
+  <div class="footer">
+    Built with ❤️ using Flask, yFinance, and LLaMA
+  </div>
+</body>
+</html>
