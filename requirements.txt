@@ -1,0 +1,6 @@
+Flask
+yfinance
+pandas
+mplfinance
+requests
+urllib3
